@@ -1,12 +1,137 @@
-<div class="hoja-a4">
-    <h2>Nuestras Redes</h2>
-    <p>Síguenos para ver lo nuevo en Bucaramanga</p>
-    
-    <button onclick="window.open('https://www.instagram.com/arisha.bga/', '_blank')" style="background-color: #E1306C; margin-bottom: 10px;">
-        Instagram
-    </button>
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arisha Sport - Redes Sociales</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #e0e0e0; 
+        }
 
-    <button onclick="window.open('https://tiktok.com/@tu_usuario', '_blank')" style="background-color: #000000; margin-bottom: 10px;">
-        TikTok
-    </button>
-</div>
+        .hoja-a4 { 
+            background: white; 
+            width: 90%; 
+            max-width: 400px; 
+            padding: 40px 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            position: relative;
+            text-align: center;
+        }
+
+        .perfil-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #25d366;
+            margin-bottom: 15px;
+        }
+
+        h2 { color: #333; margin-bottom: 5px; }
+        p { color: #666; font-size: 14px; margin-bottom: 25px; }
+
+        /* Botones de Redes */
+        .btn-red {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-red:active { transform: scale(0.98); }
+
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .tiktok { background-color: #000000; }
+        .whatsapp { background-color: #25d366; }
+
+        /* Estilo de las flechas */
+        .flecha {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        .flecha-izq { left: 10px; color: #333; }
+        .flecha-der { right: 10px; color: #333; }
+
+        .numero-pagina {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #888;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flecha flecha-izq" onclick="irPagina('index4.html')">❮</div>
+
+    <div class="hoja-a4">
+        <img src="assets/img/logo.jpg" alt="Logo Arisha" class="perfil-img" onerror="this.src='https://via.placeholder.com/100'">
+        
+        <h2>Conéctate con nosotros</h2>
+        <p>Síguenos para no perderte las nuevas colecciones</p>
+
+        <button class="btn-red instagram" onclick="window.open('https://www.instagram.com/arisha.bga/', '_blank')">
+            SÍGUENOS EN INSTAGRAM
+        </button>
+
+        <button class="btn-red tiktok" onclick="window.open('https://www.tiktok.com/@arisha.sport', '_blank')">
+            SÍGUENOS EN TIKTOK
+        </button>
+
+        <button class="btn-red whatsapp" onclick="irPagina('pagos.html')">
+            VER MÉTODOS DE PAGO
+        </button>
+
+        <div class="numero-pagina">Pág. 05</div>
+    </div>
+
+    <div class="flecha flecha-der" onclick="irPagina('pagos.html')">❯</div>
+
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+
+    <script>
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
+            }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
