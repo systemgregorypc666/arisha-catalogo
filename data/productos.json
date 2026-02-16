@@ -1,1 +1,8 @@
-ID, Nombre_del_Conjunto, Talla, Precio y Link_de_Imagen
+[
+  {
+    "id": 1,
+    "nombre": "Conjunto Licra Pro",
+    "precio": "85.000 COP",
+    "imagen": "assets/img/foto1.jpg"
+  }
+]
