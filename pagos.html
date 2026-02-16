@@ -1,13 +1,149 @@
-<div class="hoja-a4">
-    <h3>Información de Pago</h3>
-    <div style="border: 2px dashed #25d366; padding: 15px; border-radius: 10px;">
-        <p><strong>NEQUI / BANCOLOMBIA</strong></p>
-        <p>Número: 310 695 4859</p>
-        <p>Titular: Arisha Sport</p>
-    </div>
-    <br>
-    <button onclick="enviarWhatsApp('Reporte de Pago', 'Confirmación')">
-        Enviar Comprobante
-    </button>
-</div>
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arisha Sport - Métodos de Pago</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #e0e0e0; 
+        }
 
+        .hoja-a4 { 
+            background: white; 
+            width: 90%; 
+            max-width: 400px; 
+            padding: 40px 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            position: relative;
+            text-align: center;
+        }
+
+        h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #25d366; padding-bottom: 10px; }
+        
+        /* Contenedor de cuentas */
+        .card-pago {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nequi { border-left: 8px solid #ff0080; }
+        .bancolombia { border-left: 8px solid #fd0; }
+
+        .banco-nombre { font-weight: bold; font-size: 18px; color: #333; display: block; }
+        .cuenta-numero { font-family: monospace; font-size: 20px; color: #25d366; font-weight: bold; letter-spacing: 1px; }
+        .titular { font-size: 14px; color: #666; display: block; margin-top: 5px; }
+
+        .instruccion { font-size: 13px; color: #888; margin: 20px 0; font-style: italic; }
+
+        button { 
+            background-color: #25d366; 
+            color: white; 
+            border: none; 
+            padding: 15px 25px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100%; 
+            font-size: 16px;
+        }
+
+        /* Flechas de navegación */
+        .flecha {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        .flecha-izq { left: 10px; color: #333; }
+        .flecha-der { right: 10px; color: #333; }
+
+        .numero-pagina {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #888;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flecha flecha-izq" onclick="irPagina('redes.html')">❮</div>
+
+    <div class="hoja-a4">
+        <h2>Finalizar Pedido</h2>
+        <p>Realiza tu pago de forma segura:</p>
+
+        <div class="card-pago nequi">
+            <span class="banco-nombre">NEQUI</span>
+            <span class="cuenta-numero">310 695 4859</span>
+            <span class="titular">Titular: Arisha Sport</span>
+        </div>
+
+        <div class="card-pago bancolombia">
+            <span class="banco-nombre">BANCOLOMBIA</span>
+            <span class="cuenta-numero">000-000000-00</span>
+            <span class="titular">Ahorros / Titular: Arisha Sport</span>
+        </div>
+
+        <p class="instruccion">"Una vez realizado el pago, envía el comprobante para despachar tu pedido"</p>
+
+        <button onclick="enviarWhatsApp('Reporte de Pago', 'Adjunto mi comprobante')">
+            ENVIAR COMPROBANTE
+        </button>
+
+        <div class="numero-pagina">FIN / Pág. 06</div>
+    </div>
+
+    <div class="flecha flecha-der" onclick="irPagina('index.html')">❯</div>
+
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+
+    <script>
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
+            }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+
+        function enviarWhatsApp(motivo, detalle) {
+            const telefono = "573106954859"; 
+            const mensaje = encodeURIComponent(`Hola Arisha! 👋 *${motivo}*\nYa realicé la transferencia.\nAquí te adjunto el soporte.`);
+            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
