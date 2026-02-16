@@ -1,1 +1,101 @@
 (Conjunto Azul).
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#25d366">
+    <title>Arisha Sport - Conjunto Azul</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #e0e0e0; /* Fondo gris para que resalte la "hoja" */
+        }
+
+        /* Contenedor principal que simula la hoja A4 */
+        .hoja-a4 { 
+            background: white; 
+            width: 90%; 
+            max-width: 400px; /* Tamaño ideal para celulares */
+            padding: 40px 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            position: relative;
+            text-align: center;
+        }
+
+        .producto img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        
+        button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+
+        /* Estilo de las flechas System Gregory PC */
+        .flecha {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            user-select: none;
+            z-index: 100;
+        }
+
+        .flecha-izq { left: 10px; color: #999; }
+        .flecha-der { right: 10px; color: #333; }
+
+        .flecha:hover { background: white; scale: 1.1; }
+    </style>
+</head>
+<body>
+
+    <div class="flecha flecha-izq" onclick="irPagina('index.html')">❮</div>
+
+    <div class="hoja-a4">
+        <div class="producto">
+            <h2>Conjunto Deportivo Azul</h2>
+            <img src="assets/img/azul.jpg" alt="Ropa Deportiva azul">
+            <p>Precio: <strong>55.000 COP</strong></p>
+            <button onclick="enviarWhatsApp('Conjunto Deportivo azul', '55.000 COP')">
+                Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div class="flecha flecha-der" onclick="irPagina('index2.html')">❯</div>
+
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+
+    <script>
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
+            }
+            // Esperamos 300ms para que se escuche el flip antes de cambiar
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+
+        function enviarWhatsApp(nombreProducto, precio) {
+            const telefono = "573106954859"; 
+            const mensaje = encodeURIComponent(`Hola Arisha! 👋 Vi tu catálogo.\n📌 *${nombreProducto}*\n💰 *${precio}*\n¿Disponible para Bucaramanga?`);
+            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
