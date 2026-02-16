@@ -14,14 +14,13 @@
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            background-color: #e0e0e0; /* Fondo gris para que resalte la "hoja" */
+            background-color: #e0e0e0; 
         }
 
-        /* Contenedor principal que simula la hoja A4 */
         .hoja-a4 { 
             background: white; 
             width: 90%; 
-            max-width: 400px; /* Tamaño ideal para celulares */
+            max-width: 400px; 
             padding: 40px 20px; 
             border-radius: 5px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
@@ -33,7 +32,6 @@
         
         button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* Estilo de las flechas System Gregory PC */
         .flecha {
             position: fixed;
             top: 50%;
@@ -52,10 +50,23 @@
             z-index: 100;
         }
 
-        .flecha-izq { left: 10px; color: #999; }
+        .flecha-izq { left: 10px; color: #333; } /* La puse oscura para que se note */
         .flecha-der { right: 10px; color: #333; }
 
         .flecha:hover { background: white; scale: 1.1; }
+
+        /* --- ESTILO ANALIZADO PARA EL NÚMERO --- */
+        .numero-pagina {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #888;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 50px; /* Un poco más ancho para que quepa "Pág." */
+        }
     </style>
 </head>
 <body>
@@ -64,13 +75,15 @@
 
     <div class="hoja-a4">
         <div class="producto">
-            <h2>Conjunto  Azul</h2>
+            <h2>Conjunto Azul</h2>
             <img src="assets/img/azul.jpg" alt="Ropa Deportiva azul">
             <p>Precio: <strong>55.000 COP</strong></p>
             <button onclick="enviarWhatsApp('Conjunto Deportivo azul', '55.000 COP')">
                 Pedir por WhatsApp
             </button>
         </div>
+
+        <div class="numero-pagina">Pág. 02</div>
     </div>
 
     <div class="flecha flecha-der" onclick="irPagina('index3.html')">❯</div>
@@ -84,7 +97,6 @@
                 sonido.currentTime = 0;
                 sonido.play();
             }
-            // Esperamos 300ms para que se escuche el flip antes de cambiar
             setTimeout(() => {
                 window.location.href = url;
             }, 300);
