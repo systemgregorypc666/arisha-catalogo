@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#25d366">
     <title>Arisha Sport - Bucaramanga</title>
+    
     <style>
         body { 
             font-family: sans-serif; 
@@ -14,18 +15,17 @@
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            background-color: #e0e0e0; /* Fondo gris para que resalte la "hoja" */
+            background-color: #f0f0f0; 
         }
 
-        /* Contenedor principal que simula la hoja A4 */
         .hoja-a4 { 
             background: white; 
             width: 90%; 
-            max-width: 400px; /* Tamaño ideal para celulares */
+            max-width: 400px; 
             padding: 40px 20px; 
-            border-radius: 5px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-            position: relative;
+            border-radius: 10px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            position: relative; /* Importante para que el número se quede adentro */
             text-align: center;
         }
 
@@ -33,34 +33,44 @@
         
         button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* Estilo de las flechas System Gregory PC */
         .flecha {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            user-select: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 100;
+            text-decoration: none;
+            color: black;
         }
 
-        .flecha-izq { left: 10px; color: #999; }
-        .flecha-der { right: 10px; color: #333; }
+        .flecha-izq { left: 10px; }
+        .flecha-der { right: 10px; }
 
-        .flecha:hover { background: white; scale: 1.1; }
+        /* --- NUEVO ESTILO PARA EL NÚMERO --- */
+        .numero-pagina {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #888;
+            font-family: monospace;
+            border-bottom: 2px solid #25d366; /* Un toque verde para combinar */
+            padding: 2px 5px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="flecha flecha-izq" onclick="irPagina('index.html')">❮</div>
+    <a class="flecha flecha-izq" onclick="irPagina('index.html')">❮</a>
 
     <div class="hoja-a4">
         <div class="producto">
@@ -71,23 +81,19 @@
                 Pedir por WhatsApp
             </button>
         </div>
+
+        <div class="numero-pagina">Pág. 01</div>
     </div>
 
-    <div class="flecha flecha-der" onclick="irPagina('index2.html')">❯</div>
+    <a class="flecha flecha-der" onclick="irPagina('index1.html')">❯</a>
 
     <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
 
     <script>
         function irPagina(url) {
             const sonido = document.getElementById('sonido-pagina');
-            if (sonido) {
-                sonido.currentTime = 0;
-                sonido.play();
-            }
-            // Esperamos 300ms para que se escuche el flip antes de cambiar
-            setTimeout(() => {
-                window.location.href = url;
-            }, 300);
+            if (sonido) { sonido.currentTime = 0; sonido.play(); }
+            setTimeout(() => { window.location.href = url; }, 300);
         }
 
         function enviarWhatsApp(nombreProducto, precio) {
