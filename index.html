@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arisha - Catálogo Deportivo 2026</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Arisha Sport - Bucaramanga</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
+        .producto { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        button { background-color: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Arisha Sport - Bucaramanga</h1>
-        <p>Catálogo Web & App @2026</p>
-    </header>
 
-    <main id="catalogo">
-        <div id="contenedor-productos"></div>
-    </main>
+    <div class="producto">
+        <h2>Conjunto Deportivo Arisha</h2>
+        <p>Precio: 85.000 COP</p>
+        <button onclick="sonarPagina(); enviarWhatsApp('Conjunto Deportivo Arisha', '85.000 COP')">
+            Pedir por WhatsApp
+        </button>
+    </div>
 
     <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
 
-    <footer>
-        <button onclick="enviarWhatsApp()">Pedir por WhatsApp (Nequi/Daviplata)</button>
-    </footer>
+    <script>
+        // Pega aquí mismo el código que me pasaste para probar rápido
+        function sonarPagina() {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) { sonido.currentTime = 0; sonido.play(); }
+        }
 
-    <script src="js/main.js"></script>
+        function enviarWhatsApp(nombreProducto, precio) {
+            const telefono = "573164132805"; // Pon el número real de ella aquí
+            const mensaje = encodeURIComponent(`Hola Arisha! 👋 Vi tu catálogo.\n📌 *${nombreProducto}*\n💰 *${precio}*\n¿Disponible para Bucaramanga?`);
+            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
+        }
+    </script>
 </body>
 </html>
