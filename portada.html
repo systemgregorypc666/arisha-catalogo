@@ -3,122 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARISHA | Catálogo Oficial</title>
+    <title>ARISHA | Portada Oficial</title>
     
     <style>
         /* 1. RESET Y FUENTES */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f9f9f9; color: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #e0e0e0; color: #333; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
 
-        /* 2. PANTALLA DE CARGA (SPLASH SCREEN) */
+        /* 2. PANTALLA DE CARGA */
         #loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff; display: flex; justify-content: center; align-items: center;
+            z-index: 9999; transition: opacity 0.6s ease;
         }
-        .loader-content { text-align: center; }
-        .logo-arisha-anim {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #000;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .spinner {
-            width: 30px; height: 30px;
-            border: 3px solid #eee;
-            border-top: 3px solid #000;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .logo-arisha-anim { font-size: 2.5rem; font-weight: 900; letter-spacing: 8px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-        /* 3. DISEÑO DEL CATÁLOGO */
-        header { 
-            background: #000; color: #fff; padding: 20px; 
-            text-align: center; position: sticky; top: 0; z-index: 100;
+        /* 3. DISEÑO PORTADA (HOJA A4) */
+        .hoja-portada {
+            background: white; width: 90%; max-width: 400px; height: 80vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative; text-align: center; padding: 20px;
         }
-        .container { padding: 15px; max-width: 1200px; margin: auto; }
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
+        .logo-principal { font-size: 3rem; font-weight: 900; letter-spacing: 10px; margin-bottom: 10px; }
+        .subtitulo { font-size: 0.8rem; letter-spacing: 5px; color: #666; text-transform: uppercase; border-top: 1px solid #eee; padding-top: 10px; }
+
+        /* 4. FLECHAS DE NAVEGACIÓN */
+        .flecha {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.9); border-radius: 50%;
+            width: 60px; height: 60px; display: flex; align-items: center;
+            justify-content: center; font-size: 30px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100;
+            transition: 0.3s; border: none;
         }
-        .producto-card {
-            background: #fff; border-radius: 10px; overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        .producto-card:active { transform: scale(0.98); }
-        .producto-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
-        .producto-info { padding: 10px; }
-        .precio { font-weight: bold; color: #27ae60; font-size: 1.1rem; }
-        
-        /* 4. BOTÓN WHATSAPP FLOTANTE */
-        .btn-whatsapp {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25d366; color: white;
-            padding: 15px 20px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
+        .flecha:hover { background: #000; color: #fff; scale: 1.1; }
+        .flecha-der { right: 20px; }
+        /* Flecha izquierda oculta en portada porque es la pág 1 */
+        .flecha-izq { left: 20px; opacity: 0.3; cursor: not-allowed; }
+
+        .instruccion { position: absolute; bottom: 40px; font-size: 0.7rem; color: #aaa; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
     </style>
 </head>
 <body>
 
     <div id="loader">
-        <div class="loader-content">
-            <div class="logo-arisha-anim">ARISHA</div>
-            <div class="spinner"></div>
-            <p style="margin-top: 15px; font-size: 0.8rem; color: #888; letter-spacing: 2px;">COLOMBIA</p>
-        </div>
+        <div class="logo-arisha-anim">ARISHA</div>
     </div>
 
-    <header>
-        <h1>ARISHA</h1>
-        <p style="font-size: 0.7rem; letter-spacing: 3px;">MODA DEPORTIVA</p>
-    </header>
+    <button class="flecha flecha-izq" disabled>❮</button>
+    <button class="flecha flecha-der" onclick="irPagina('index.html')">❯</button>
 
-    <div class="container">
-        <div class="grid-productos" id="catalogo">
-            <div class="producto-card">
-                <div class="producto-img" style="display:flex; align-items:center; justify-content:center;">Foto</div>
-                <div class="producto-info">
-                    <h4>Cargando inventario...</h4>
-                    <p class="precio">--</p>
-                </div>
-            </div>
-        </div>
+    <div class="hoja-portada">
+        <h1 class="logo-principal">ARISHA</h1>
+        <p class="subtitulo">Nueva Colección 2026</p>
+        
+        <div class="instruccion">Desliza para ver el catálogo</div>
     </div>
 
-    <a href="https://wa.me/573189085274" class="btn-whatsapp" target="_blank">
-        Pedido por WhatsApp
-    </a>
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
 
     <script>
-        // Control del Loader
+        // Quitar Loader
         window.addEventListener("load", function() {
-            const loader = document.getElementById("loader");
-            setTimeout(function() {
-                loader.style.opacity = "0";
-                setTimeout(function() {
-                    loader.style.display = "none";
-                }, 600);
-            }, 1800); // 1.8 segundos para que luzca el logo
+            setTimeout(() => {
+                document.getElementById("loader").style.opacity = "0";
+                setTimeout(() => document.getElementById("loader").style.display = "none", 600);
+            }, 1500);
         });
 
-        // Aquí iría tu lógica para leer el Excel o JSON mañana
+        // Función para ir a la primera página de productos
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
+            }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
     </script>
 </body>
 </html>
