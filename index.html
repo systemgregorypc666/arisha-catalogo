@@ -1,106 +1,124 @@
 <!DOCTYPE html>
-<html lang="es-CO">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#25d366">
-    <title>Arisha Sport - Bucaramanga</title>
+    <title>ARISHA | Catálogo Oficial</title>
     
     <style>
-        body { 
-            font-family: sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            background-color: #f0f0f0; 
-        }
+        /* 1. RESET Y FUENTES */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; }
 
-        .hoja-a4 { 
-            background: white; 
-            width: 90%; 
-            max-width: 400px; 
-            padding: 40px 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            position: relative; /* Importante para que el número se quede adentro */
-            text-align: center;
-        }
-
-        .producto img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-        
-        button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
-
-        .flecha {
+        /* 2. PANTALLA DE CARGA (SPLASH SCREEN) */
+        #loader {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #ffffff;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 100;
-            text-decoration: none;
-            color: black;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
         }
+        .loader-content { text-align: center; }
+        .logo-arisha-anim {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #000;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .spinner {
+            width: 30px; height: 30px;
+            border: 3px solid #eee;
+            border-top: 3px solid #000;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-        .flecha-izq { left: 10px; }
-        .flecha-der { right: 10px; }
-
-        /* --- NUEVO ESTILO PARA EL NÚMERO --- */
-        .numero-pagina {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 14px;
-            color: #888;
-            font-family: monospace;
-            border-bottom: 2px solid #25d366; /* Un toque verde para combinar */
-            padding: 2px 5px;
+        /* 3. DISEÑO DEL CATÁLOGO */
+        header { 
+            background: #000; color: #fff; padding: 20px; 
+            text-align: center; position: sticky; top: 0; z-index: 100;
+        }
+        .container { padding: 15px; max-width: 1200px; margin: auto; }
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        .producto-card {
+            background: #fff; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .producto-card:active { transform: scale(0.98); }
+        .producto-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        .producto-info { padding: 10px; }
+        .precio { font-weight: bold; color: #27ae60; font-size: 1.1rem; }
+        
+        /* 4. BOTÓN WHATSAPP FLOTANTE */
+        .btn-whatsapp {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #25d366; color: white;
+            padding: 15px 20px; border-radius: 50px;
+            text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
-    <a class="flecha flecha-izq" onclick="irPagina('index.html')">❮</a>
-
-    <div class="hoja-a4">
-        <div class="producto">
-            <h2>Conjunto Deportivo Arisha</h2>
-            <img src="assets/img/foto.jpg" alt="Ropa Deportiva Arisha">
-            <p>Precio: <strong>85.000 COP</strong></p>
-            <button onclick="enviarWhatsApp('Conjunto Deportivo Arisha', '85.000 COP')">
-                Pedir por WhatsApp
-            </button>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="logo-arisha-anim">ARISHA</div>
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #888; letter-spacing: 2px;">COLOMBIA</p>
         </div>
-
-        <div class="numero-pagina">Pág. 01</div>
     </div>
 
-    <a class="flecha flecha-der" onclick="irPagina('index2.html')">❯</a>
+    <header>
+        <h1>ARISHA</h1>
+        <p style="font-size: 0.7rem; letter-spacing: 3px;">MODA DEPORTIVA</p>
+    </header>
 
-    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+    <div class="container">
+        <div class="grid-productos" id="catalogo">
+            <div class="producto-card">
+                <div class="producto-img" style="display:flex; align-items:center; justify-content:center;">Foto</div>
+                <div class="producto-info">
+                    <h4>Cargando inventario...</h4>
+                    <p class="precio">--</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/57XXXXXXX" class="btn-whatsapp" target="_blank">
+        Pedido por WhatsApp
+    </a>
 
     <script>
-        function irPagina(url) {
-            const sonido = document.getElementById('sonido-pagina');
-            if (sonido) { sonido.currentTime = 0; sonido.play(); }
-            setTimeout(() => { window.location.href = url; }, 300);
-        }
+        // Control del Loader
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("loader");
+            setTimeout(function() {
+                loader.style.opacity = "0";
+                setTimeout(function() {
+                    loader.style.display = "none";
+                }, 600);
+            }, 1800); // 1.8 segundos para que luzca el logo
+        });
 
-        function enviarWhatsApp(nombreProducto, precio) {
-            const telefono = "573106954859"; 
-            const mensaje = encodeURIComponent(`Hola Arisha! 👋 Vi tu catálogo.\n📌 *${nombreProducto}*\n💰 *${precio}*\n¿Disponible para Bucaramanga?`);
-            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
-        }
+        // Aquí iría tu lógica para leer el Excel o JSON mañana
     </script>
 </body>
 </html>
