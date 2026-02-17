@@ -1,8 +1,72 @@
 [
   {
     "id": 1,
-    "nombre": "Conjunto Licra Pro",
-    "precio": "85.000 COP",
-    "imagen": "assets/img/foto1.jpg"
+    "nombre": "Producto 1",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto1.jpg",
+    "whatsapp": "Hola, me interesa el Producto 1"
+  },
+  {
+    "id": 2,
+    "nombre": "Producto 2",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto2.jpg",
+    "whatsapp": "Hola, me interesa el Producto 2"
+  },
+  {
+    "id": 3,
+    "nombre": "Producto 3",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto3.jpg",
+    "whatsapp": "Hola, me interesa el Producto 3"
+  },
+  {
+    "id": 4,
+    "nombre": "Producto 4",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto4.jpg",
+    "whatsapp": "Hola, me interesa el Producto 4"
+  },
+  {
+    "id": 5,
+    "nombre": "Producto 5",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto5.jpg",
+    "whatsapp": "Hola, me interesa el Producto 5"
+  },
+  {
+    "id": 6,
+    "nombre": "Producto 6",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto6.jpg",
+    "whatsapp": "Hola, me interesa el Producto 6"
+  },
+  {
+    "id": 7,
+    "nombre": "Producto 7",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto7.jpg",
+    "whatsapp": "Hola, me interesa el Producto 7"
+  },
+  {
+    "id": 8,
+    "nombre": "Producto 8",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto8.jpg",
+    "whatsapp": "Hola, me interesa el Producto 8"
+  },
+  {
+    "id": 9,
+    "nombre": "Producto 9",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto9.jpg",
+    "whatsapp": "Hola, me interesa el Producto 9"
+  },
+  {
+    "id": 10,
+    "nombre": "Producto 10",
+    "precio": "0.00 COP",
+    "imagen": "assets/img/foto10.jpg",
+    "whatsapp": "Hola, me interesa el Producto 10"
   }
 ]
