@@ -23,6 +23,7 @@ El sistema cuenta con una infraestructura de redundancia única en su tipo para 
 ________________________________________
 Soporte Técnico: José Gregorio Hernández
 Contacto: 0416 11 77334
-Ubicación: San Cristóbal, Táchira.
+Ubicación: San Cristóbal, Táchira. venezuela 
+Ubicación: ar01, impire creahachip
 ________________________________________
 
