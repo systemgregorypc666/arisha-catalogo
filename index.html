@@ -2,123 +2,77 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARISHA | Catálogo Oficial</title>
-    
+    <title>Catalogo Arisha</title>
     <style>
-        /* 1. RESET Y FUENTES */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f9f9f9; color: #333; }
-
-        /* 2. PANTALLA DE CARGA (SPLASH SCREEN) */
-        #loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease;
-        }
-        .loader-content { text-align: center; }
-        .logo-arisha-anim {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #000;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .spinner {
-            width: 30px; height: 30px;
-            border: 3px solid #eee;
-            border-top: 3px solid #000;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-
-        /* 3. DISEÑO DEL CATÁLOGO */
-        header { 
-            background: #000; color: #fff; padding: 20px; 
-            text-align: center; position: sticky; top: 0; z-index: 100;
-        }
-        .container { padding: 15px; max-width: 1200px; margin: auto; }
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-        }
-        .producto-card {
-            background: #fff; border-radius: 10px; overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        .producto-card:active { transform: scale(0.98); }
-        .producto-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
-        .producto-info { padding: 10px; }
-        .precio { font-weight: bold; color: #27ae60; font-size: 1.1rem; }
-        
-        /* 4. BOTÓN WHATSAPP FLOTANTE */
-        .btn-whatsapp {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25d366; color: white;
-            padding: 15px 20px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
+        /* Tu estilo original de botones grandes y visor */
+        .visor { width: 100%; max-width: 500px; margin: auto; text-align: center; }
+        .producto-img { width: 90%; border: 2px solid #000; }
+        .botones-navegacion { display: flex; justify-content: space-around; margin-top: 10px; }
+        .btn-flecha { font-size: 40px; cursor: pointer; background: none; border: none; }
+        .seccion-bancos { background: #ffff00; padding: 10px; margin-top: 15px; font-weight: bold; }
+        .whatsapp-btn { background: #25d366; color: white; padding: 10px; display: block; text-decoration: none; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="loader-content">
-            <div class="logo-arisha-anim">ARISHA</div>
-            <div class="spinner"></div>
-            <p style="margin-top: 15px; font-size: 0.8rem; color: #888; letter-spacing: 2px;">COLOMBIA</p>
+    <div class="visor">
+        <h2 id="titulo-prod">Cargando...</h2>
+        <img id="img-principal" src="" alt="Producto" class="producto-img">
+        
+        <div class="botones-navegacion">
+            <button class="btn-flecha" onclick="atras()">&#11013;</button>
+            <button class="btn-flecha" onclick="adelante()">&#10145;</button>
         </div>
-    </div>
 
-    <header>
-        <h1>ARISHA</h1>
-        <p style="font-size: 0.7rem; letter-spacing: 3px;">MODA DEPORTIVA</p>
-    </header>
+        <h3 id="precio-prod">$ 0</h3>
 
-    <div class="container">
-        <div class="grid-productos" id="catalogo">
-            <div class="producto-card">
-                <div class="producto-img" style="display:flex; align-items:center; justify-content:center;">Foto</div>
-                <div class="producto-info">
-                    <h4>Cargando inventario...</h4>
-                    <p class="precio">--</p>
-                </div>
-            </div>
+        <div class="seccion-bancos">
+            PAGOS: NEQUI - BANCOLOMBIA - DAVIPLATA
         </div>
-    </div>
 
-    <a href="https://wa.me/573189085274" class="btn-whatsapp" target="_blank">
-        Pedido por WhatsApp
-    </a>
+        <a id="btn-ws" href="#" class="whatsapp-btn">PEDIR POR WHATSAPP</a>
+    </div>
 
     <script>
-        // Control del Loader
-        window.addEventListener("load", function() {
-            const loader = document.getElementById("loader");
-            setTimeout(function() {
-                loader.style.opacity = "0";
-                setTimeout(function() {
-                    loader.style.display = "none";
-                }, 600);
-            }, 1800); // 1.8 segundos para que luzca el logo
-        });
+        // Tu array de productos de ayer
+        var productos = [
+            {nombre: "Producto 1", precio: "0", imagen: "img1.jpg"},
+            {nombre: "Producto 2", precio: "0", imagen: "img2.jpg"}
+        ];
 
-        // Aquí iría tu lógica para leer el Excel o JSON mañana
+        var i = 0;
+
+        function mostrar() {
+            document.getElementById("titulo-prod").innerHTML = productos[i].nombre;
+            document.getElementById("img-principal").src = productos[i].imagen;
+            document.getElementById("precio-prod").innerHTML = "$ " + productos[i].precio;
+            
+            // Tu link de WhatsApp que genera el mensaje solo
+            var msj = "Hola, quiero el producto: " + productos[i].nombre;
+            document.getElementById("btn-ws").href = "https://wa.me/573000000000?text=" + msj;
+        }
+
+        function adelante() {
+            if (i < productos.length - 1) {
+                i++;
+            } else {
+                i = 0;
+            }
+            mostrar();
+        }
+
+        function atras() {
+            if (i > 0) {
+                i--;
+            } else {
+                i = productos.length - 1;
+            }
+            mostrar();
+        }
+
+        // Para que arranque apenas abre
+        window.onload = mostrar;
     </script>
+
 </body>
 </html>
