@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#25d366">
+    <title>Arisha Sport - Licla azul</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #e0e0e0; 
+        }
+
+        .hoja-a4 { 
+            background: white; 
+            width: 90%; 
+            max-width: 400px; 
+            padding: 40px 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            position: relative;
+            text-align: center;
+        }
+
+        .producto img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        
+        button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+
+        .flecha {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            user-select: none;
+            z-index: 100;
+        }
+
+        .flecha-izq { left: 10px; color: #333; } /* La puse oscura para que se note */
+        .flecha-der { right: 10px; color: #333; }
+
+        .flecha:hover { background: white; scale: 1.1; }
+
+        /* --- ESTILO ANALIZADO PARA EL NÚMERO --- */
+        .numero-pagina {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #888;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 50px; /* Un poco más ancho para que quepa "Pág." */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flecha flecha-izq" onclick="irPagina('index5.html')">❮</div>
+
+    <div class="hoja-a4">
+        <div class="producto">
+            <h2>Licla azul</h2>
+            <img src="assets/img/6.jpg" alt="Licla azul">
+            <p>Precio: <strong>55.000 COP</strong></p>
+            <button onclick="enviarWhatsApp('Conjunto de Licla azul', '55.000 COP')">
+                Pedir por WhatsApp
+            </button>
+        </div>
+
+        <div class="numero-pagina">Pág. 07</div>
+    </div>
+
+    <div class="flecha flecha-der" onclick="irPagina('redes.html')">❯</div>
+
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+
+    <script>
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
+            }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+
+        function enviarWhatsApp(nombreProducto, precio) {
+            const telefono = "573189085274"; 
+            const mensaje = encodeURIComponent(`Hola Arisha! 👋 Vi tu catálogo.\n📌 *${nombreProducto}*\n💰 *${precio}*\n¿Disponible para Bucaramanga?`);
+            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
