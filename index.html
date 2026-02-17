@@ -1,78 +1,100 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
     <meta charset="UTF-8">
-    <title>Catalogo Arisha</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#25d366">
+    <title>Arisha Sport - Catálogo</title>
     <style>
-        /* Tu estilo original de botones grandes y visor */
-        .visor { width: 100%; max-width: 500px; margin: auto; text-align: center; }
-        .producto-img { width: 90%; border: 2px solid #000; }
-        .botones-navegacion { display: flex; justify-content: space-around; margin-top: 10px; }
-        .btn-flecha { font-size: 40px; cursor: pointer; background: none; border: none; }
-        .seccion-bancos { background: #ffff00; padding: 10px; margin-top: 15px; font-weight: bold; }
-        .whatsapp-btn { background: #25d366; color: white; padding: 10px; display: block; text-decoration: none; margin-top: 10px; }
+        /* PANTALLA DE CARGA */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; display: flex; justify-content: center; align-items: center;
+            z-index: 1000; transition: opacity 0.5s ease;
+        }
+        .logo-carga { font-size: 2rem; font-weight: bold; letter-spacing: 5px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        /* TU ESTILO ORIGINAL */
+        body { 
+            font-family: sans-serif; display: flex; justify-content: center; 
+            align-items: center; min-height: 100vh; margin: 0; background-color: #e0e0e0; 
+        }
+        .hoja-a4 { 
+            background: white; width: 90%; max-width: 400px; padding: 40px 20px; 
+            border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            position: relative; text-align: center;
+        }
+        .producto img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        button { background-color: #25d366; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+        
+        .flecha {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.8); border-radius: 50%;
+            width: 50px; height: 50px; display: flex; align-items: center;
+            justify-content: center; font-size: 24px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); user-select: none; z-index: 100;
+        }
+        .flecha-izq { left: 10px; color: #333; }
+        .flecha-der { right: 10px; color: #333; }
+        .numero-pagina {
+            position: absolute; bottom: 15px; right: 20px;
+            font-size: 14px; color: #888; font-weight: bold;
+            border-top: 1px solid #eee; padding-top: 5px; width: 50px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="visor">
-        <h2 id="titulo-prod">Cargando...</h2>
-        <img id="img-principal" src="" alt="Producto" class="producto-img">
-        
-        <div class="botones-navegacion">
-            <button class="btn-flecha" onclick="atras()">&#11013;</button>
-            <button class="btn-flecha" onclick="adelante()">&#10145;</button>
-        </div>
-
-        <h3 id="precio-prod">$ 0</h3>
-
-        <div class="seccion-bancos">
-            PAGOS: NEQUI - BANCOLOMBIA - DAVIPLATA
-        </div>
-
-        <a id="btn-ws" href="#" class="whatsapp-btn">PEDIR POR WHATSAPP</a>
+    <div id="loader">
+        <div class="logo-carga">ARISHA</div>
     </div>
 
+    <div class="flecha flecha-izq" onclick="irPagina('index.html')">❮</div>
+    
+    <div class="hoja-a4">
+        <div class="producto">
+            <h2>Conjunto </h2>
+            <img src="assets/img/foto.jpg" alt="Ropa Deportiva">
+            <p>Precio: <strong>55.000 COP</strong></p>
+            <button onclick="enviarWhatsApp('Conjunto Deportivo ', '55.000 COP')">
+                Pedir por WhatsApp
+            </button>
+        </div>
+        <div class="numero-pagina">Pág. 02</div>
+    </div>
+
+    <div class="flecha flecha-der" onclick="irPagina('index2.html')">❯</div>
+
+    <audio id="sonido-pagina" src="assets/audio/flip.mp3"></audio>
+
     <script>
-        // Tu array de productos de ayer
-        var productos = [
-            {nombre: "Producto 1", precio: "0", imagen: "img1.jpg"},
-            {nombre: "Producto 2", precio: "0", imagen: "img2.jpg"}
-        ];
+        // Quitar el loader automáticamente
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1000);
+        });
 
-        var i = 0;
-
-        function mostrar() {
-            document.getElementById("titulo-prod").innerHTML = productos[i].nombre;
-            document.getElementById("img-principal").src = productos[i].imagen;
-            document.getElementById("precio-prod").innerHTML = "$ " + productos[i].precio;
-            
-            // Tu link de WhatsApp que genera el mensaje solo
-            var msj = "Hola, quiero el producto: " + productos[i].nombre;
-            document.getElementById("btn-ws").href = "https://wa.me/573000000000?text=" + msj;
-        }
-
-        function adelante() {
-            if (i < productos.length - 1) {
-                i++;
-            } else {
-                i = 0;
+        function irPagina(url) {
+            const sonido = document.getElementById('sonido-pagina');
+            if (sonido) {
+                sonido.currentTime = 0;
+                sonido.play();
             }
-            mostrar();
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
         }
 
-        function atras() {
-            if (i > 0) {
-                i--;
-            } else {
-                i = productos.length - 1;
-            }
-            mostrar();
+        function enviarWhatsApp(nombreProducto, precio) {
+            const telefono = "573189085274"; 
+            const mensaje = encodeURIComponent(`Hola Arisha! 👋 Vi tu catálogo.\n📌 *${nombreProducto}*\n💰 *${precio}*\n¿Disponible para Bucaramanga?`);
+            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
         }
-
-        // Para que arranque apenas abre
-        window.onload = mostrar;
     </script>
-
 </body>
 </html>
