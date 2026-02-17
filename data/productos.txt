@@ -1,0 +1,84 @@
+=========================================
+CATÁLOGO ARISHA - CONTROL DE PRODUCTOS
+Desarrollado por: System Gregory PC
+=========================================
+
+ID: 01
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/1.jpg
+WHATSAPP: "Hola, me interesa el producto 1 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 02
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/2.jpg
+WHATSAPP: "Hola, me interesa el producto 2 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 03
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/3.jpg
+WHATSAPP: "Hola, me interesa el producto 3 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 04
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/4.jpg
+WHATSAPP: "Hola, me interesa el producto 4 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 05
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/5.jpg
+WHATSAPP: "Hola, me interesa el producto 5 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 06
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/6.jpg
+WHATSAPP: "Hola, me interesa el producto 6 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 07
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/7.jpg
+WHATSAPP: "Hola, me interesa el producto 7 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 08
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/8.jpg
+WHATSAPP: "Hola, me interesa el producto 8 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 09
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/9.jpg
+WHATSAPP: "Hola, me interesa el producto 9 que vi en el catálogo."
+
+-----------------------------------------
+
+ID: 10
+NOMBRE: [Esperando Excel...]
+PRECIO: [Esperando Excel...]
+IMAGEN: img/10.jpg
+WHATSAPP: "Hola, me interesa el producto 10 que vi en el catálogo."
+
+=========================================
