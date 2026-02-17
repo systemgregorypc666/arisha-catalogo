@@ -1,0 +1,23 @@
+// 1. Primero, asegúrate de tener este script en el <head> de tu index:
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+function generarCatalogoCompleto() {
+    // Seleccionamos el contenedor que tiene todos los productos
+    const elemento = document.querySelector("#contenedor-catalogo"); 
+    
+    // Configuramos el PDF para que parezca una revista profesional
+    const opciones = {
+        margin:       [0.5, 0.5], // Márgenes elegantes
+        filename:     'Catalogo_Oficial_Arisha.pdf',
+        image:        { type: 'jpeg', quality: 1.0 }, // Calidad máxima
+        html2canvas:  { 
+            scale: 3, // Muy alta resolución para que no se vea borroso
+            letterRendering: true,
+            useCORS: true 
+        },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Ejecutamos la conversión
+    html2pdf().set(opciones).from(elemento).save();
+}
